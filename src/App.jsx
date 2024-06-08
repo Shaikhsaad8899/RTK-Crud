@@ -1,28 +1,24 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import store from './store'; // Assuming your Redux store is exported from 'store.js'
-import UserForm from './components/userForm';
-import UserList from './components/userList';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'; // Import createBrowserRouter and RouterProvider
+import store from './Redux/store';
+import { routes } from './components/routes'; // Import routes from routes.js
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import './assets/css/style.css';
 
 const App = () => {
+  const router = createBrowserRouter(routes); // Pass routes to createBrowserRouter
   return (
     <Provider store={store}>
-      <div>
-        <div className="container">
-        <div className="row d-flex justify-content-center " >
-
-            <div className="col-6">
-
-              <h1 style={{textAlign:"center"}}>User Management System</h1>
-              <h4>Add User</h4>
-              <UserForm />
-              <h4>User List</h4>
-              <UserList />
-            </div>
-          </div>
+      <RouterProvider router={router}>
+        <div>
+          {/* Your component rendering goes here */}
         </div>
-      </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+      </RouterProvider>
     </Provider>
   );
 };
